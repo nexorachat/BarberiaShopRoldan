@@ -1,1 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barber Shop Roldán | Barbería en Roldán, Murcia</title>
+<meta name="description" content="Barber Shop Roldán: cortes de pelo, degradados y cuidado de barba en Roldán, Murcia. Consulta disponibilidad de cita por WhatsApp.">
+<meta name="theme-color" content="#070707">
+<meta property="og:title" content="Barber Shop Roldán | Barbería en Roldán, Murcia">
+<meta property="og:description" content="Cortes de pelo, degradados y cuidado de barba en Roldán, Murcia.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HairSalon","name":"Barber Shop Roldán","telephone":"+34613532022","address":{"@type":"PostalAddress","streetAddress":"Av. Balsicas, 23, bajo","postalCode":"30709","addressLocality":"Roldán","addressRegion":"Murcia","addressCountry":"ES"}}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070707; --bg2:#0e0e0e; --bg3:#151515;
+  --line:rgba(255,255,255,.13);
+  --text:#f2f1ee; --muted:#a4a6aa; --silver:#c9ccd1;
+  --red:#9b1c22; --red-hi:#b32229; --red-text:#e0575c;
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --pad:clamp(1.25rem,5vw,4.5rem);
+  --header-h:68px;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px) + 8px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.0625rem;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.95;margin:0;text-transform:uppercase;letter-spacing:.005em}
+p{margin:0}
+:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
+.wrap{padding-inline:var(--pad);max-width:1480px;margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* Poste de barbería: el único elemento decorativo recurrente */
+.pole{background:repeating-linear-gradient(135deg,var(--red) 0 14px,#ece9e4 14px 28px,#1c2a4a 28px 42px);background-size:59.400px 59.400px}
+@keyframes spin{to{background-position:0 59.400px}}
+.pole.live{animation:spin 3.500s linear infinite}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;padding:.85rem 1.7rem;font:600 .95rem/1 var(--body);letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:background .25s,border-color .25s,transform .25s,color .25s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-hi);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--silver);background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.btn-sm{min-height:44px;padding:.65rem 1.1rem;font-size:.82rem}
+
+/* Cabecera */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.site-header.solid,.site-header.open{background:rgba(7,7,7,.94);border-bottom-color:var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.bar{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo small{font:600 .62rem/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--silver);margin-bottom:3px}
+.logo b{font:900 1.85rem/.85 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:1.9rem}
+.nav a:not(.btn){text-decoration:none;font-size:.92rem;color:var(--silver);transition:color .2s;padding:.4rem 0;border-bottom:1px solid transparent}
+.nav a:not(.btn):hover{color:#fff;border-bottom-color:var(--red-text)}
+.burger{display:none;width:48px;height:48px;background:none;border:1px solid var(--line);border-radius:2px;color:var(--text);cursor:pointer;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:currentColor;position:relative;transition:transform .25s,background .25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.open .burger span{background:transparent}
+.open .burger span::before{top:0;transform:rotate(45deg)}
+.open .burger span::after{top:0;transform:rotate(-45deg)}
+
+/* Hero 3D */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:radial-gradient(120% 90% at 70% 20%,#1b1b1d 0,#070707 60%)}
+#led{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(7,7,7,.9) 0,rgba(7,7,7,.6) 42%,rgba(7,7,7,0) 78%),linear-gradient(0deg,rgba(7,7,7,.95) 0,rgba(7,7,7,0) 38%),linear-gradient(180deg,rgba(7,7,7,.7) 0,rgba(7,7,7,0) 20%)}
+.pole3d{position:absolute;z-index:3;top:calc(var(--header-h) + env(safe-area-inset-top,0px) + .9rem);right:clamp(1.2rem,4.6vw,4.6rem);width:clamp(58px,5.2vw,80px);height:clamp(185px,27vh,255px);pointer-events:none;filter:drop-shadow(0 16px 16px rgba(0,0,0,.6))}
+.pole3d::before{content:"";position:absolute;inset:-25% -110%;background:radial-gradient(closest-side,rgba(155,28,34,.2),rgba(155,28,34,0) 72%)}
+#pole{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-copy{position:relative;z-index:2;width:100%;max-width:62rem;display:flex;flex-direction:column;padding:calc(var(--header-h) + 3rem) var(--pad) clamp(7rem,15vh,9.5rem)}
+.kicker{font:600 .8rem/1.3 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--silver);margin-bottom:1.6rem}
+.hero h1{font-weight:900;font-size:clamp(3.2rem,8.2vw,9rem);line-height:.86;letter-spacing:.005em}
+.hero h1 span{display:block;white-space:nowrap}
+.hero-sub{max-width:34rem;margin-top:2rem;color:var(--silver);font-size:1.12rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
+.hero-strip{position:absolute;z-index:2;left:0;right:0;bottom:0;border-top:1px solid var(--line);background:rgba(7,7,7,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero-strip .wrap{display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;padding-block:1.05rem;font-size:.9rem;color:var(--silver)}
+.hero-strip b{color:#fff;font-weight:600;margin-right:.5rem}
+.hero-strip a{text-decoration:none}
+.nogl .pole3d{display:none}
+
+/* Entrada del hero: la única secuencia al cargar */
+.js .hero-copy>*{opacity:0;transform:translateY(18px);animation:in .8s cubic-bezier(.2,.7,.2,1) forwards}
+.js .hero-copy>*:nth-child(1){animation-delay:.05s}
+.js .hero-copy>*:nth-child(2){animation-delay:.18s}
+.js .hero-copy>*:nth-child(3){animation-delay:.34s}
+.js .hero-copy>*:nth-child(4){animation-delay:.46s}
+@keyframes in{to{opacity:1;transform:none}}
+
+/* Secciones */
+section{position:relative}
+.sec{padding-block:clamp(4.5rem,10vw,8.5rem)}
+.sec-head{max-width:46rem;margin-bottom:clamp(2.2rem,5vw,3.8rem)}
+.sec-head h2{font-size:clamp(2.6rem,6.4vw,5.6rem)}
+.sec-head p{margin-top:1.1rem;color:var(--silver);font-size:1.12rem;max-width:34rem}
+
+/* Servicios */
+#servicios{background:var(--bg)}
+.svc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:start;padding:1.7rem 1.6rem;background:var(--bg);transition:background .3s}
+.svc:hover{background:var(--bg3)}
+.svc-ico{color:var(--red-text);padding-top:.15rem}
+.svc h3{font-size:1.9rem;letter-spacing:.02em;margin-bottom:.45rem}
+.svc p{color:var(--muted);font-size:.98rem;line-height:1.5}
+.svc-meta{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;margin-top:.8rem;font-size:.84rem}
+.svc-meta .soft{color:#85878b}
+.svc-link{align-self:center;text-decoration:none;font:600 .78rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:.85rem 1rem;border:1px solid var(--line);border-radius:2px;min-height:44px;display:inline-flex;align-items:center;transition:border-color .25s,background .25s}
+.svc-link:hover{border-color:var(--red-text);background:rgba(155,28,34,.18)}
+.svc-list>.svc:last-child:nth-child(odd){grid-column:1/-1}
+.svc-aside{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 1.6rem;background:var(--bg2)}
+.svc-aside p{color:var(--silver)}
+
+/* Galería */
+#galeria{background:var(--bg2)}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,250px);gap:clamp(.6rem,1.4vw,1.1rem)}
+.tile{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--bg3);padding:0;cursor:zoom-in;display:block;color:inherit}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.035)}
+.tile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,0);transition:box-shadow .3s}
+.tile:hover::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.t1{grid-column:1/3;grid-row:1/4}
+.t2{grid-column:3/5;grid-row:1/4}
+.t3{grid-column:5/7;grid-row:1/4;cursor:default;display:flex;flex-direction:column;justify-content:center;gap:.6rem;padding:1.6rem;border:1px dashed rgba(255,255,255,.28);background:transparent}
+.t3 b{font:800 1.9rem/1 var(--display);text-transform:uppercase}
+.t3 span{color:var(--muted);font-size:.95rem;line-height:1.45}
+
+/* La barbería */
+#barberia{background:var(--bg)}
+.about-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.about-head h2{font-size:clamp(2.6rem,6vw,5.2rem)}
+.about-text{margin-top:1.4rem;font-size:1.15rem;color:var(--silver);max-width:30rem}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.facts li{padding:.8rem 0;border-bottom:1px solid var(--line);color:var(--text);font-size:1rem}
+.locals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1.1rem)}
+.pic{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--bg3);padding:0;cursor:zoom-in;aspect-ratio:4/5;display:block;color:#fff}
+.pic img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pic:hover img,.pic:focus-visible img{transform:scale(1.035)}
+.pic span{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.1rem 1rem;text-align:left;font:800 1.5rem/1 var(--display);text-transform:uppercase;letter-spacing:.02em;background:linear-gradient(0deg,rgba(7,7,7,.88),rgba(7,7,7,0))}
+
+/* Llamada a la acción */
+.cta{background:var(--bg);padding-block:clamp(5rem,12vw,9rem);text-align:center;overflow:hidden}
+.cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:10px}
+.cta::before{top:0}.cta::after{bottom:0}
+.cta h2{font-size:clamp(3rem,8.4vw,8rem);max-width:15ch;margin-inline:auto;font-weight:900;line-height:.88}
+.cta p{margin:1.6rem auto 2.4rem;max-width:30rem;color:var(--silver);font-size:1.15rem}
+.btn-wa{min-height:60px;padding-inline:2.4rem;font-size:1.02rem}
+
+/* Contacto */
+#contacto{background:var(--bg2)}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem)}
+.contact h2{font-size:clamp(2.6rem,6vw,5.2rem)}
+.rating{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;color:var(--silver);font-size:.95rem}
+.rating svg{color:#d9b25a}
+.addr{margin-top:2rem;font-style:normal;display:grid;gap:1.2rem}
+.addr p b{display:block;font:800 1.5rem/1.1 var(--display);text-transform:uppercase;margin-bottom:.2rem}
+.addr p span{color:var(--silver)}
+.addr a.plain{color:#fff;text-underline-offset:4px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.hours{border:1px solid var(--line);padding:1.8rem;background:var(--bg)}
+.hours h3{font-size:1.9rem;margin-bottom:1.1rem}
+.hours ul{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);color:var(--silver);font-size:.98rem}
+.hours li:last-child{border-bottom:0}
+.hours li.today{color:#fff;font-weight:600}
+.hours li.today span:first-child::after{content:" · hoy";color:var(--red-text);font-weight:500}
+.hours .note{margin-top:1rem;font-size:.84rem;color:#85878b;line-height:1.45}
+.mapcard{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between;padding:1.6rem 1.8rem;border:1px solid var(--line);background:var(--bg)}
+.mapcard p{color:var(--silver);max-width:36rem}
+/* Para insertar el mapa cuando se verifique el enlace de Google Maps: sustituir .mapcard por un iframe de "Compartir > Insertar un mapa" */
+
+/* Estado en directo */
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#7c7f85;margin-right:.6rem;vertical-align:middle;flex:none}
+.is-open .dot{background:#3fcf72;animation:pulse 2s infinite}
+.is-closed .dot{background:var(--red-text)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,207,114,.55)}70%,100%{box-shadow:0 0 0 8px rgba(63,207,114,0)}}
+.status{display:flex;align-items:center;margin:0 0 1.2rem;padding:.85rem 1rem;border:1px solid var(--line);color:#fff;font-weight:600;font-size:.98rem;background:var(--bg2)}
+.hero-status{display:none;width:fit-content;max-width:100%;margin:1.5rem 0 0;background:rgba(7,7,7,.7)}
+.hero-strip .dot{margin-right:.5rem}
+
+/* Footer */
+footer{background:var(--bg);border-top:1px solid var(--line);padding-block:3.2rem 2.4rem}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.4rem}
+.foot h4{font:600 .78rem/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.foot a{text-decoration:none;color:var(--silver)}
+.foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.foot .pending{color:#85878b;font-size:.92rem}
+.legal{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;color:#85878b;font-size:.85rem}
+
+/* Visor */
+dialog.lb{border:0;padding:0;background:rgba(0,0,0,.94);max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+dialog.lb::backdrop{background:rgba(0,0,0,.9)}
+.lb-in{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:4.2rem 1rem 3.2rem}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;touch-action:pan-y}
+.lb-cap{position:absolute;left:0;right:0;bottom:1rem;text-align:center;color:var(--silver);font-size:.92rem;padding-inline:4rem}
+.lb button{position:absolute;width:48px;height:48px;border:1px solid var(--line);background:rgba(20,20,20,.85);color:#fff;border-radius:2px;cursor:pointer;font-size:1.4rem;line-height:1;display:flex;align-items:center;justify-content:center}
+.lb button:hover{border-color:var(--silver)}
+.lb .x{top:calc(1rem + env(safe-area-inset-top,0px));right:1rem}
+.lb .pv{left:1rem;top:50%;transform:translateY(-50%)}
+.lb .nx{right:1rem;top:50%;transform:translateY(-50%)}
+
+/* Aparición al desplazarse: solo en galería y servicios */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media (max-width:980px){
+  .burger{display:flex}
+  .nav{position:fixed;left:0;right:0;top:calc(var(--header-h) + env(safe-area-inset-top,0px));background:rgba(7,7,7,.98);flex-direction:column;align-items:stretch;gap:0;padding:.6rem var(--pad) 1.6rem;border-bottom:1px solid var(--line);display:none;max-height:calc(100vh - var(--header-h));overflow:auto}
+  .open .nav{display:flex}
+  .nav a:not(.btn){font-size:1.15rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+  .nav .btn{margin-top:1.2rem}
+  .hero-shade{background:linear-gradient(0deg,rgba(7,7,7,.96) 0,rgba(7,7,7,.82) 48%,rgba(7,7,7,.25) 100%),linear-gradient(180deg,rgba(7,7,7,.7) 0,rgba(7,7,7,0) 18%)}
+  .hero-copy{padding:calc(var(--header-h) + 14rem) var(--pad) 3rem}
+  .hero h1{font-size:clamp(3rem,14vw,6rem)}
+  .hero h1 span{white-space:normal}
+  .hero-strip{display:none}
+  .svc-list{grid-template-columns:1fr}
+  .about-head,.contact{grid-template-columns:1fr}
+  .hero-status{display:flex}
+  .pole3d{width:50px;height:165px;right:1rem;top:calc(var(--header-h) + env(safe-area-inset-top,0px) + .7rem)}
+  .foot{grid-template-columns:1fr 1fr}
+  .foot>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  body{font-size:1rem}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(150px,44vw,230px)}
+  .t1{grid-column:1/3;grid-row:span 2}
+  .t2{grid-column:1/2;grid-row:span 2}
+  .t3{grid-column:2/3;grid-row:span 2;padding:1rem}
+  .t3 b{font-size:1.5rem}
+  .locals{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.7rem;margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);-webkit-overflow-scrolling:touch}
+  .pic{flex:0 0 78%;scroll-snap-align:center}
+  .svc{grid-template-columns:auto 1fr;padding:1.4rem 1.2rem}
+  .svc-link{grid-column:2;justify-self:start}
+  .hero-cta .btn,.contact-btns .btn{width:100%}
+  .foot{grid-template-columns:1fr}
+  .logo b{font-size:1.6rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .hero-copy>*,.js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="site-header" id="top-header">
+  <div class="wrap bar">
+    <a class="logo" href="#inicio" aria-label="Barber Shop Roldán, inicio"><small>Barber Shop</small><b>Roldán</b></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#barberia">La barbería</a>
+      <a href="#contacto">Ubicación y contacto</a>
+      <a class="btn btn-red btn-sm" href="https://wa.me/34613532022?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20para%20una%20cita%20en%20Barber%20Shop%20Rold%C3%A1n." target="_blank" rel="noopener">Reservar cita</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <canvas id="led" aria-hidden="true"></canvas>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="pole3d" aria-hidden="true"><canvas id="pole"></canvas></div>
+  <div class="hero-copy">
+    <p class="kicker">BARBER SHOP · ROLDÁN, MURCIA</p>
+    <h1><span>Tu estilo.</span><span>Tu corte.</span><span>Tu barbería.</span></h1>
+    <p class="hero-sub">Cortes de pelo, degradados y cuidado de barba en Barber Shop Roldán. Ven a conocernos en nuestro local de Roldán.</p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="https://wa.me/34613532022?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20para%20una%20cita%20en%20Barber%20Shop%20Rold%C3%A1n." target="_blank" rel="noopener">Reservar cita</a>
+    </div>
+    <p class="status hero-status" data-status-box><i class="dot"></i><span data-status>Martes a domingo · lunes cerrado</span></p>
+  </div>
+  <div class="hero-strip">
+    <div class="wrap">
+      <span><b>Dónde</b>Av. Balsicas, 23, bajo · Roldán</span>
+      <span data-status-box><b>Ahora</b><i class="dot"></i><span data-status>Martes a domingo · lunes cerrado</span></span>
+      <a href="tel:+34613532022"><b>Teléfono</b>613 532 022</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Nuestros servicios</h2>
+      <p>Encuentra el estilo que mejor encaja contigo.</p>
+    </div>
+    <ul class="svc-list">
+      
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></div>
+        <div class="svc-body">
+          <h3>Corte de pelo</h3>
+          <p>Corte a tu medida, con acabado limpio y definido.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Corte%20de%20pelo." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Corte de pelo por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9c0-4 3-6 7-6s7 2 7 6v2c0 5-3 9-7 9s-7-4-7-9z"/><path d="M8 14c1.500 1.500 6.500 1.500 8 0"/></svg></div>
+        <div class="svc-body">
+          <h3>Arreglo de barba</h3>
+          <p>Perfilado y detalles para una barba cuidada.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Arreglo%20de%20barba." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Arreglo de barba por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17 17 5l3 3L7 20z"/><path d="m14 8 2 2"/></svg></div>
+        <div class="svc-body">
+          <h3>Afeitado clásico</h3>
+          <p>Afeitado preciso y suave, como se ha hecho siempre.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Afeitado%20cl%C3%A1sico." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Afeitado clásico por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="9" width="8" height="12" rx="2"/><path d="M9 9V5h4v4M13 3h4"/></svg></div>
+        <div class="svc-body">
+          <h3>Estilo y acabado</h3>
+          <p>Peinado final con productos de peluquería.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Estilo%20y%20acabado." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Estilo y acabado por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.500 6 11a6 6 0 0 1-12 0c0-4.500 6-11 6-11z"/></svg></div>
+        <div class="svc-body">
+          <h3>Tintes de pelo</h3>
+          <p>Color, estilo y personalidad.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Tintes%20de%20pelo." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Tintes de pelo por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="5" height="14" rx="1"/><rect x="12" y="3" width="5" height="14" rx="1"/><path d="M7 17v4M14 17v4"/></svg></div>
+        <div class="svc-body">
+          <h3>Alisado de pelo</h3>
+          <p>Cabello liso, suave y sin encrespamiento.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Alisado%20de%20pelo." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Alisado de pelo por WhatsApp">Consultar</a>
+      </li>
+      <li class="svc reveal">
+        <div class="svc-ico"><svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800z"/><path d="M19 17v4M17 19h4"/></svg></div>
+        <div class="svc-body">
+          <h3>Limpieza facial</h3>
+          <p>Piel limpia, fresca y cuidada.</p>
+          <p class="svc-meta"><span class="soft">Precio: consultar</span><span class="soft">Duración: consultar</span></p>
+        </div>
+        <a class="svc-link" href="https://wa.me/34613532022?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%3A%20Limpieza%20facial." target="_blank" rel="noopener" aria-label="Consultar disponibilidad de Limpieza facial por WhatsApp">Consultar</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Trabajos que hablan por sí solos</h2>
+    </div>
+    <div class="grid" id="gallery">
+      <button class="tile t1 reveal" type="button" data-cap="Corte con degradado lateral y peinado hacia atrás" aria-label="Ampliar foto: degradado lateral con peinado hacia atrás"><img src="images/corte-degradado.webp" alt="Corte con degradado lateral y peinado hacia atrás" loading="lazy" width="671" height="788"></button>
+      <button class="tile t2 reveal" type="button" data-cap="Un barbero trabajando en el interior del local" aria-label="Ampliar foto: barbero cortando el pelo a un cliente"><img src="images/barbero-cortando.webp" alt="Barbero cortando el pelo a un cliente en el interior de la barbería" loading="lazy" width="635" height="790"></button>
+      <div class="tile t3 reveal"><b>Más trabajos próximamente</b><span>Aquí irán nuevos cortes y degradados cuando lleguen más fotografías.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="barberia">
+  <div class="wrap">
+    <div class="about-head">
+      <div>
+        <h2>Tu barbería en Roldán</h2>
+        <p class="about-text">Un espacio pensado para cuidar tu imagen y encontrar tu estilo. Visítanos en nuestro local de Roldán y consulta tu próxima cita.</p>
+      </div>
+      <ul class="facts">
+        <li>Sillones de barbero profesionales</li>
+        <li>Espejos amplios en cada puesto</li>
+        <li>Estanterías con productos de peluquería</li>
+        <li>Iluminación LED geométrica en el techo</li>
+        <li>Zona de espera</li>
+      </ul>
+    </div>
+    <div class="locals">
+      <button class="pic reveal" type="button" data-cap="Fachada de Barber Shop Roldán, en la carretera de Balsicas" aria-label="Ampliar foto: fachada del local"><img src="images/fachada.webp" alt="Fachada de Barber Shop Roldán con el cartel en el escaparate y el poste de barbero iluminado" loading="lazy" width="634" height="790"><span>La fachada</span></button>
+      <button class="pic reveal" type="button" data-cap="Sillones de barbero y espejos bajo el techo de luces LED" aria-label="Ampliar foto: sillones y espejos"><img src="images/interior-puestos.webp" alt="Interior de la barbería con sillones de barbero, espejos y techo con iluminación LED hexagonal" loading="lazy" width="632" height="788"><span>Los puestos</span></button>
+      <button class="pic reveal" type="button" data-cap="Zona de trabajo con espejos y sala de espera" aria-label="Ampliar foto: zona de trabajo y sala de espera"><img src="images/zona-espera.webp" alt="Puestos de trabajo con espejos y zona de espera con sofás y alfombra verde" loading="lazy" width="628" height="788"><span>La zona de espera</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="pole live" style="position:absolute;inset:0 0 auto 0;height:10px" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2>¿Preparado para tu próximo corte?</h2>
+    <p>Contacta con Barber Shop Roldán y consulta la disponibilidad para tu próxima cita.</p>
+    <a class="btn btn-red btn-wa" href="https://wa.me/34613532022?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20para%20una%20cita%20en%20Barber%20Shop%20Rold%C3%A1n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.040 2a9.900 9.900 0 0 0-8.480 14.980L2 22l5.170-1.520A9.900 9.900 0 1 0 12.040 2zm0 1.800a8.100 8.100 0 1 1-4.300 14.950l-.31-.18-3.060.9.92-2.980-.2-.32A8.100 8.100 0 0 1 12.040 3.800zm-3.200 3.900c-.2 0-.52.080-.8.380-.27.300-1.040 1.020-1.040 2.480s1.070 2.880 1.220 3.080c.15.200 2.080 3.300 5.130 4.500 2.540 1 3.060.8 3.610.75.550-.05 1.780-.73 2.030-1.430.25-.7.250-1.300.18-1.430-.08-.13-.28-.2-.58-.35-.3-.15-1.780-.88-2.050-.98-.28-.1-.48-.15-.68.150-.2.300-.78.980-.95 1.180-.18.200-.35.230-.65.080-.3-.15-1.270-.47-2.420-1.500-.9-.8-1.500-1.780-1.680-2.080-.18-.3-.02-.47.130-.62.130-.13.300-.35.450-.52.150-.18.200-.3.300-.5.100-.2.050-.38-.03-.53-.08-.15-.68-1.650-.93-2.250-.25-.58-.5-.5-.68-.5z"/></svg> Hablar por WhatsApp</a>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap contact">
+    <div>
+      <h2>Ven a visitarnos</h2>
+      <p class="rating"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="m12 2.500 2.900 6.100 6.600.8-4.900 4.600 1.300 6.600L12 17.300 6.100 20.600l1.300-6.600L2.500 9.400l6.600-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="m12 2.500 2.900 6.100 6.600.8-4.900 4.600 1.300 6.600L12 17.300 6.100 20.600l1.300-6.600L2.500 9.400l6.600-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="m12 2.500 2.900 6.100 6.600.8-4.900 4.600 1.300 6.600L12 17.300 6.100 20.600l1.300-6.600L2.500 9.400l6.600-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="m12 2.500 2.900 6.100 6.600.8-4.900 4.600 1.300 6.600L12 17.300 6.100 20.600l1.300-6.600L2.500 9.400l6.600-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="m12 2.500 2.900 6.100 6.600.8-4.900 4.600 1.300 6.600L12 17.300 6.100 20.600l1.300-6.600L2.500 9.400l6.600-.8z"/></svg> <span>4,8 sobre 5 · 25 reseñas en Google</span></p>
+      <address class="addr">
+        <p><b>Barber Shop Roldán</b><span>Av. Balsicas, 23, bajo<br>30709 Roldán, Murcia<br>Carretera de Balsicas, junto a la farmacia</span></p>
+        <p><b>Teléfono</b><a class="plain" href="tel:+34613532022">613 532 022</a></p>
+      </address>
+      <div class="contact-btns">
+        <a class="btn btn-red" href="tel:+34613532022"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Llamar</a>
+        <a class="btn btn-ghost" href="https://wa.me/34613532022?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20para%20una%20cita%20en%20Barber%20Shop%20Rold%C3%A1n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.040 2a9.900 9.900 0 0 0-8.480 14.980L2 22l5.170-1.520A9.900 9.900 0 1 0 12.040 2zm0 1.800a8.100 8.100 0 1 1-4.300 14.950l-.31-.18-3.060.9.92-2.980-.2-.32A8.100 8.100 0 0 1 12.040 3.800zm-3.200 3.900c-.2 0-.52.080-.8.380-.27.300-1.040 1.020-1.040 2.480s1.070 2.880 1.220 3.080c.15.200 2.080 3.300 5.130 4.500 2.540 1 3.060.8 3.610.75.550-.05 1.780-.73 2.030-1.430.25-.7.250-1.300.18-1.430-.08-.13-.28-.2-.58-.35-.3-.15-1.780-.88-2.050-.98-.28-.1-.48-.15-.68.150-.2.300-.78.980-.95 1.180-.18.200-.35.230-.65.080-.3-.15-1.270-.47-2.420-1.500-.9-.8-1.500-1.780-1.680-2.080-.18-.3-.02-.47.130-.62.130-.13.300-.35.450-.52.150-.18.200-.3.300-.5.100-.2.050-.38-.03-.53-.08-.15-.68-1.650-.93-2.250-.25-.58-.5-.5-.68-.5z"/></svg> WhatsApp</a>
+      </div>
+    </div>
+    <div class="hours">
+      <h3>Horario</h3>
+      <p class="status" data-status-box><i class="dot"></i><span data-status>Consulta el horario</span></p>
+      <ul id="hours"><li data-day="1"><span>Lunes</span><span>Cerrado</span></li><li data-day="2"><span>Martes</span><span>10:00–14:30 · 16:30–22:00</span></li><li data-day="3"><span>Miércoles</span><span>10:00–14:30 · 16:30–22:00</span></li><li data-day="4"><span>Jueves</span><span>10:00–14:30 · 16:30–22:00</span></li><li data-day="5"><span>Viernes</span><span>10:00–14:30 · 16:30–22:00</span></li><li data-day="6"><span>Sábado</span><span>10:00–14:30 · 16:30–22:00</span></li><li data-day="0"><span>Domingo</span><span>10:00–14:30 · 16:30–22:00</span></li></ul>
+      <!-- Horario tomado del cartel del local. Google Maps muestra 10:00–15:00 y 16:30–22:30: confirmar con el propietario. -->
+    </div>
+    <div class="mapcard">
+      <p><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg> Av. Balsicas, 23, bajo, Roldán. Abre la ubicación en Google Maps para ver la ruta desde donde estés.</p>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Barber%20Shop%20Rold%C3%A1n%2C%20Av.%20Balsicas%2023%2C%2030709%20Rold%C3%A1n%2C%20Murcia" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#inicio" aria-label="Barber Shop Roldán, inicio"><small>Barber Shop</small><b>Roldán</b></a>
+        <p style="margin-top:1rem;color:var(--muted);max-width:22rem">Av. Balsicas, 23, bajo · Roldán, Murcia</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#barberia">La barbería</a></li>
+          <li><a href="#contacto">Ubicación y contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34613532022">613 532 022</a></li>
+          <li><a href="https://wa.me/34613532022?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20para%20una%20cita%20en%20Barber%20Shop%20Rold%C3%A1n." target="_blank" rel="noopener">WhatsApp</a></li>
+          <li class="pending">Instagram: se añadirá cuando esté confirmado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr">2026</span> Barber Shop Roldán</span>
+      <span>Aviso legal y política de privacidad: pendientes de redactar antes de publicar</span>
+    </div>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Visor de fotografías">
+  <div class="lb-in">
+    <button class="x" type="button" id="lbx" aria-label="Cerrar">✕</button>
+    <button class="pv" type="button" id="lbp" aria-label="Foto anterior">‹</button>
+    <img id="lbi" alt="">
+    <button class="nx" type="button" id="lbn" aria-label="Foto siguiente">›</button>
+    <p class="lb-cap" id="lbc"></p>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var header=document.getElementById('top-header'),burger=document.getElementById('burger'),nav=document.getElementById('nav');
+  function onScroll(){header.classList.toggle('solid',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  function setMenu(o){header.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}
+  burger.addEventListener('click',function(){setMenu(!header.classList.contains('open'))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+  var rv=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    rv.forEach(function(el){io.observe(el)});
+  }else{rv.forEach(function(el){el.classList.add('in')})}
+
+  // Día actual en el horario (hora de Madrid)
+  try{
+    var d=new Date().toLocaleDateString('en-US',{timeZone:'Europe/Madrid',weekday:'long'});
+    var map={Sunday:0,Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6};
+    var li=document.querySelector('#hours li[data-day="'+map[d]+'"]');if(li)li.classList.add('today');
+  }catch(e){}
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // Estado "abierto ahora" en directo (hora de Madrid). Horario del cartel del local.
+  // índice 0 = domingo ... 6 = sábado
+  var SCH=[[[600,870],[990,1320]],null,[[600,870],[990,1320]],[[600,870],[990,1320]],[[600,870],[990,1320]],[[600,870],[990,1320]],[[600,870],[990,1320]]];
+  var DN=['el domingo','el lunes','el martes','el miércoles','el jueves','el viernes','el sábado'];
+  function hm(m){return ('0'+Math.floor(m/60)).slice(-2)+':'+('0'+m%60).slice(-2)}
+  function madridNow(){
+    var parts=new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};
+    parts.forEach(function(p){o[p.type]=p.value});
+    var days={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+    return {d:days[o.weekday],m:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)};
+  }
+  function status(){
+    var n=madridNow(),today=SCH[n.d],i,txt,open=false;
+    if(today){
+      for(i=0;i<today.length;i++){
+        if(n.m>=today[i][0]&&n.m<today[i][1]){
+          open=true;var left=today[i][1]-n.m;
+          txt='Abierto ahora · '+(left<=30?'cierra pronto, a las ':'cierra a las ')+hm(today[i][1]);break;
+        }
+      }
+      if(!open){
+        for(i=0;i<today.length;i++){if(n.m<today[i][0]){txt='Cerrado ahora · abre a las '+hm(today[i][0]);break}}
+      }
+    }
+    if(!txt){
+      for(i=1;i<=7;i++){
+        var dd=(n.d+i)%7;
+        if(SCH[dd]){txt=(today?'Cerrado ahora':'Cerrado hoy')+' · abre '+(i===1?'mañana':DN[dd])+' a las '+hm(SCH[dd][0][0]);break}
+      }
+    }
+    document.querySelectorAll('[data-status]').forEach(function(el){el.textContent=txt});
+    document.querySelectorAll('[data-status-box]').forEach(function(el){el.classList.toggle('is-open',open);el.classList.toggle('is-closed',!open)});
+  }
+  try{status();setInterval(status,30000)}catch(e){}
+
+  // Visor de galería
+  var tiles=[].slice.call(document.querySelectorAll('button[data-cap]')),idx=0;
+  var lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
+  function show(i){idx=(i+tiles.length)%tiles.length;var im=tiles[idx].querySelector('img');lbi.src=im.src;lbi.alt=im.alt;lbc.textContent=tiles[idx].dataset.cap||''}
+  function open(i){show(i);if(lb.showModal)lb.showModal();else lb.setAttribute('open','')}
+  function close(){if(lb.close)lb.close();else lb.removeAttribute('open')}
+  tiles.forEach(function(t,i){t.addEventListener('click',function(){open(i)})});
+  document.getElementById('lbx').addEventListener('click',close);
+  document.getElementById('lbp').addEventListener('click',function(){show(idx-1)});
+  document.getElementById('lbn').addEventListener('click',function(){show(idx+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-in'))close()});
+  document.addEventListener('keydown',function(e){if(!lb.open)return;if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+  var sx=null;
+  lbi.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lbi.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(idx+(dx<0?1:-1));sx=null});
+})();
+
+/* ===== Portada 3D: techo de LEDs hexagonales + poste de barbero ===== */
+(function(){
+  var hero=document.getElementById('inicio'),cv=document.getElementById('led'),pv=document.getElementById('pole');
+  if(!window.THREE||!cv||!pv){document.documentElement.classList.add('nogl');return}
+  var T=window.THREE,r1,r2;
+  try{
+    r1=new T.WebGLRenderer({canvas:cv,antialias:true});
+    r2=new T.WebGLRenderer({canvas:pv,antialias:true,alpha:true});
+  }catch(e){document.documentElement.classList.add('nogl');return}
+  var dpr=Math.min(window.devicePixelRatio||1,1.75);
+  r1.setPixelRatio(dpr);r2.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  r1.setClearColor(0x070707,1);r2.setClearColor(0x000000,0);
+  r2.outputEncoding=T.sRGBEncoding;
+
+  /* --- Techo --- */
+  var scene=new T.Scene();scene.fog=new T.FogExp2(0x070707,0.045);
+  var cam=new T.PerspectiveCamera(62,1,0.1,90);
+  var CEIL=3.2,L=0.62,DZ=Math.sqrt(3)*L,edges={},list=[];
+  for(var i=-17;i<=17;i++)for(var j=-34;j<=6;j++){
+    var cx=i*1.5*L,cz=j*DZ+(Math.abs(i)%2?DZ/2:0);
+    for(var k=0;k<6;k++){
+      var a0=k*Math.PI/3,a1=(k+1)*Math.PI/3;
+      var x0=cx+L*Math.cos(a0),z0=cz+L*Math.sin(a0),x1=cx+L*Math.cos(a1),z1=cz+L*Math.sin(a1);
+      var key=Math.round((x0+x1)*50)+','+Math.round((z0+z1)*50);
+      if(edges[key])continue;edges[key]=1;list.push([x0,z0,x1,z1]);
+    }
+  }
+  var layers=[[0.026,0xffffff,1,false],[0.085,0xeef3ff,0.2,true],[0.26,0xc9d6ff,0.055,true]];
+  var m4=new T.Matrix4(),q=new T.Quaternion(),pos=new T.Vector3(),sc=new T.Vector3(),yAxis=new T.Vector3(0,1,0);
+  layers.forEach(function(ly){
+    var g=new T.BoxGeometry(1,ly[0],ly[0]);
+    var mat=new T.MeshBasicMaterial({color:ly[1],transparent:ly[3],opacity:ly[2],depthWrite:!ly[3],blending:ly[3]?T.AdditiveBlending:T.NormalBlending});
+    var im=new T.InstancedMesh(g,mat,list.length);
+    list.forEach(function(e,n){
+      var dx=e[2]-e[0],dz=e[3]-e[1],len=Math.sqrt(dx*dx+dz*dz);
+      q.setFromAxisAngle(yAxis,-Math.atan2(dz,dx));
+      pos.set((e[0]+e[2])/2,CEIL,(e[1]+e[3])/2);sc.set(len+ly[0]*0.9,1,1);
+      m4.compose(pos,q,sc);im.setMatrixAt(n,m4);
+    });
+    im.frustumCulled=false;scene.add(im);
+  });
+  /* Placas del falso techo */
+  var gp=[];for(var gx=-24;gx<=24;gx+=1.2){gp.push(gx,CEIL+0.01,10,gx,CEIL+0.01,-60)}
+  for(var gz=8;gz>=-60;gz-=1.2){gp.push(-24,CEIL+0.01,gz,24,CEIL+0.01,gz)}
+  var lg=new T.BufferGeometry();lg.setAttribute('position',new T.Float32BufferAttribute(gp,3));
+  scene.add(new T.LineSegments(lg,new T.LineBasicMaterial({color:0x232326})));
+  var plane=new T.Mesh(new T.PlaneGeometry(60,90),new T.MeshBasicMaterial({color:0x0c0c0e}));
+  plane.rotation.x=Math.PI/2;plane.position.set(0,CEIL+0.02,-26);scene.add(plane);
+
+  /* --- Poste de barbero: materiales PBR, cristal y cromo con reflejos de estudio --- */
+  var s2=new T.Scene(),c2=new T.PerspectiveCamera(29,1,0.1,60);
+  c2.position.set(1.2,0.5,12.5);c2.lookAt(0,0.05,0);
+  r2.toneMapping=T.ACESFilmicToneMapping;r2.toneMappingExposure=1.05;
+  var pm=new T.PMREMGenerator(r2),envS=new T.Scene();
+  envS.add(new T.Mesh(new T.BoxGeometry(30,30,30),new T.MeshBasicMaterial({color:0x08080a,side:T.BackSide})));
+  function soft(w,h,x,y,z,r,g,b){
+    var m=new T.MeshBasicMaterial({side:T.DoubleSide});m.color.setRGB(r,g,b);
+    var pl=new T.Mesh(new T.PlaneGeometry(w,h),m);pl.position.set(x,y,z);pl.lookAt(0,0,0);envS.add(pl);
+  }
+  soft(7,12,9,5,8,6.5,6.2,5.8);      /* luz principal */
+  soft(16,2.5,0,11,3,5,5,5.5);       /* franja superior */
+  soft(3,12,-9,1,2,4.5,0.5,0.6);     /* contraluz rojo */
+  soft(4,10,7,0,-9,1.5,2.2,4);       /* contraluz frío */
+  soft(14,6,0,-10,4,0.4,0.4,0.4);    /* rebote del suelo */
+  s2.environment=pm.fromScene(envS,0.025).texture;
+
+  var cvs=document.createElement('canvas');cvs.width=cvs.height=256;
+  var cx2=cvs.getContext('2d'),id=cx2.createImageData(256,256),cols=[[150,24,32],[236,230,220],[24,38,78]];
+  for(var y=0;y<256;y++)for(var x=0;x<256;x++){
+    var t=((x+y)%128)/128,c=cols[t<0.3333?0:t<0.6666?1:2],o=(y*256+x)*4;
+    id.data[o]=c[0];id.data[o+1]=c[1];id.data[o+2]=c[2];id.data[o+3]=255;
+  }
+  cx2.putImageData(id,0,0);
+  var tex=new T.CanvasTexture(cvs);tex.wrapS=tex.wrapT=T.RepeatWrapping;tex.repeat.set(3,3);
+  tex.encoding=T.sRGBEncoding;tex.anisotropy=8;
+  var pole=new T.Group();
+  /* Cilindro interior: es lo único que gira, como en un poste real */
+  var stripes=new T.Mesh(new T.CylinderGeometry(0.5,0.5,3.1,96,1,true),
+    new T.MeshPhysicalMaterial({map:tex,emissiveMap:tex,emissive:0xffffff,emissiveIntensity:0.1,roughness:0.34,metalness:0,clearcoat:0.8,clearcoatRoughness:0.08,envMapIntensity:0.9}));
+  pole.add(stripes);
+  /* Tubo de cristal */
+  pole.add(new T.Mesh(new T.CylinderGeometry(0.545,0.545,3.15,96,1,true),
+    new T.MeshPhysicalMaterial({color:0xffffff,metalness:0,roughness:0.03,transparent:true,opacity:0.22,envMapIntensity:3.2,clearcoat:1,clearcoatRoughness:0.02,depthWrite:false})));
+  /* Tapas cromadas torneadas */
+  var chrome=new T.MeshStandardMaterial({color:0xd9dde3,metalness:1,roughness:0.16,envMapIntensity:1.5,side:T.DoubleSide});
+  var prof=[[0.001,0],[0.56,0],[0.64,0.03],[0.67,0.1],[0.67,0.2],[0.61,0.25],[0.61,0.3],[0.67,0.34],[0.67,0.42],[0.56,0.5],[0.42,0.56],[0.3,0.6],[0.18,0.62],[0.16,0.78],[0.001,0.78]].map(function(p){return new T.Vector2(p[0],p[1])});
+  var capGeo=new T.LatheGeometry(prof,96);
+  var capTop=new T.Mesh(capGeo,chrome);capTop.position.y=1.575;pole.add(capTop);
+  var capBot=new T.Mesh(capGeo,chrome);capBot.position.y=-1.575;capBot.rotation.x=Math.PI;pole.add(capBot);
+  var ball=new T.Mesh(new T.SphereGeometry(0.3,48,32),chrome);ball.position.y=1.575+0.95;pole.add(ball);
+  var knob=new T.Mesh(new T.SphereGeometry(0.13,32,24),chrome);knob.position.y=-1.575-0.86;pole.add(knob);
+  /* Soporte de pared: pletina negra con dos brazos cromados */
+  var rail=new T.Mesh(new T.BoxGeometry(0.36,4.5,0.1),new T.MeshStandardMaterial({color:0x1b1b1d,metalness:0.7,roughness:0.38,envMapIntensity:1}));
+  rail.position.set(0,0,-1.1);pole.add(rail);
+  [1.95,-1.95].forEach(function(y){
+    var arm=new T.Mesh(new T.CylinderGeometry(0.07,0.07,1,24),chrome);arm.rotation.x=Math.PI/2;arm.position.set(0,y,-0.55);pole.add(arm);
+    var screw=new T.Mesh(new T.CylinderGeometry(0.09,0.09,0.05,24),chrome);screw.rotation.x=Math.PI/2;screw.position.set(0,y,-1.17);pole.add(screw);
+  });
+  s2.add(pole);
+  s2.add(new T.AmbientLight(0xffffff,0.12));
+  var dl=new T.DirectionalLight(0xffffff,1.4);dl.position.set(4,5,6);s2.add(dl);
+  var rl=new T.PointLight(0xff4a52,0.6,20);rl.position.set(-4,1,3);s2.add(rl);
+
+  /* --- Tamaño, ratón y bucle --- */
+  var xoff=0;
+  function size(){
+    var w=hero.clientWidth,h=hero.clientHeight;
+    xoff=w>=980?-0.6:0;r1.setSize(w,h,false);cam.aspect=w/h;cam.fov=w<700?78:62;cam.updateProjectionMatrix();
+    var pw=pv.clientWidth,ph=pv.clientHeight;r2.setSize(pw,ph,false);c2.aspect=pw/ph;c2.updateProjectionMatrix();
+  }
+  size();window.addEventListener('resize',size);
+  var mx=0,my=0,tx=0,ty=0;
+  hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2});
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running=false,last=0,camZ=0,time=0,raf=0;
+  function frame(now){
+    if(!running)return;
+    var dt=Math.min((now-last)/1000||0.016,0.05);last=now;time+=dt;
+    camZ-=dt*0.55;if(camZ<=-DZ)camZ+=DZ;
+    mx+=(tx-mx)*0.05;my+=(ty-my)*0.05;
+    cam.position.set(Math.sin(time*0.25)*0.3+mx*0.5,0,camZ);
+    cam.lookAt(xoff+mx*1.3+Math.sin(time*0.25)*0.3,2.15-my*0.45,camZ-4);
+    stripes.rotation.y+=dt*0.95;
+    pole.rotation.y=mx*0.1;pole.rotation.x=my*0.04;
+    r1.render(scene,cam);r2.render(s2,c2);
+    raf=requestAnimationFrame(frame);
+  }
+  function staticRender(){
+    cam.position.set(0,0,-0.4);cam.lookAt(xoff,2.15,-4.4);stripes.rotation.y=0.6;
+    r1.render(scene,cam);r2.render(s2,c2);
+  }
+  if(reduce){staticRender();window.addEventListener('resize',staticRender);return}
+  function start(){if(running)return;running=true;last=performance.now();raf=requestAnimationFrame(frame)}
+  function stop(){running=false;cancelAnimationFrame(raf)}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es[0].isIntersecting?start():stop()},{threshold:0}).observe(hero);
+  }else start();
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+})();
+</script>
+</body>
+</html>
